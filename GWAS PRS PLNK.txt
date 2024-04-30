@@ -1,0 +1,8 @@
+
+# GAD-7 as sample
+#-----GWAS code-----------
+
+/home/fzhxjtu/run0/plink2 --bgen /home/fzhxjtu/run0/ukb_imp_chr${PBS_ARRAYID}_v3.bgen --sample /home/fzhxjtu/run0/ukb_imp_chr22_v3.sample  --covar-variance-standardize --glm --covar /data/fzhxjtu/gwas_md/covar 0.01 --geno 0.1 --hwe 0.001 --mind 0.1 --pheno /data/fzhxjtu/gwas_md/GWAS_gad.txt --out /data/fzhxjtu/gwas_md/result/gwasgadChr${PBS_ARRAYID} &&  > /data/fzhxjtu/gwas_gad/result/sub.out
+
+#-----PRS code-----------
+/home/fzhxjtu/run0/ukbped/PRSice_linux/PRSice_linux --base /home/fzhxjtu/run0/ukbped/PRSice_linux/anxscore_GWAS.txt --snp ID ¨Cchr CHROM --bp POS --A1 REF --A2 ALT --stat BETA --pvalue P --target-list /home/fzhxjtu/run0/ukbped/PRSice_linux/chr.txt --keep /home/fzhxjtu/run0/ukbped/PRSice_linux/kingunrelated.txt --thread 1  --beta --binary-target F --pheno /home/fzhxjtu/run0/ukbped/PRSice_linux/anxiety_score_q.txt --lower 5e-08  --interval  0.01   --model add  --score avg  --perm 10000 --clump-kb 500 --clump-r2 0.2 --cov /home/fzhxjtu/run0/ukbped/PRSice_linux/qmentalcov.txt --all-score  --out /home/fzhxjtu/run0/ukbped/PRSice_linux/q_UK_anscore &>>/home/fzhxjtu/run0/ukbped/PRSice_linux/q_UK_anscore.out
